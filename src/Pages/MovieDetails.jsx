@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'Services/API';
 import { StyledFilmImg, StyledLink } from 'StyledTags/Tags.styled';
@@ -30,7 +30,6 @@ const MovieDetails = () => {
               alt={original_title || 'no images'}
             />
           </div>
-
           <div>
             <h1>{original_title}</h1>
             <p>{`User Score:  ${(vote_average * 10).toFixed(0)}%`}</p>
@@ -43,7 +42,6 @@ const MovieDetails = () => {
               ))}
             </ul>
           </div>
-
           <h4>Additional information</h4>
           <div className="movie_additional">
             <StyledLink
@@ -61,7 +59,9 @@ const MovieDetails = () => {
               Reviews
             </StyledLink>
           </div>
-          <Outlet />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
         </div>
       </div>
     </>
