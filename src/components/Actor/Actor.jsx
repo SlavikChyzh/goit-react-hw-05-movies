@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { fetchActorImg } from 'Services/API';
+import PropTypes from 'prop-types';
 
 const Actor = ({ actor }) => {
   const [actorImgUrl, setActorImgUrl] = useState();
@@ -18,3 +19,11 @@ const Actor = ({ actor }) => {
 };
 
 export { Actor };
+
+Actor.propTypes = {
+  actor: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    profile_path: PropTypes.string,
+    character: PropTypes.string.isRequired,
+  }),
+};
