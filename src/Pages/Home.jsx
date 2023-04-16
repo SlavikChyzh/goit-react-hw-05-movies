@@ -23,7 +23,10 @@ const Home = () => {
           {trendMovies.map(movie => {
             return (
               <StyledLi key={movie.id}>
-                <StyledLink to={movie.id} state={{ from: location }}>
+                <StyledLink
+                  to={`movies/${movie.id}`}
+                  state={{ from: location }}
+                >
                   {movie.original_title}
                 </StyledLink>
               </StyledLi>

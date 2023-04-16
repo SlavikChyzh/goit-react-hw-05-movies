@@ -22,4 +22,45 @@ async function fetchMovie(movieName) {
   return response.data.results;
 }
 
-export { fetchTrendMovies, fetchMovie };
+async function fetchMovieDetails(movieId) {
+  const response = await axios(`movie/${movieId}?`, {
+    params: {
+      api_key: API_KEY,
+    },
+  });
+  return response.data;
+}
+
+async function fetchMovieActors(movieId) {
+  const response = await axios(`movie/${movieId}/credits?`, {
+    params: {
+      api_key: API_KEY,
+    },
+  });
+  return response.data.cast;
+}
+
+async function fetchMovieReviews(movieId) {
+  const response = await axios(
+    `movie/${movieId}/reviews?language=en-US&page=1&`,
+    {
+      params: {
+        api_key: API_KEY,
+      },
+    }
+  );
+  return response.data.results;
+}
+
+async function fetchActorImg(profile_path) {
+  return `https://image.tmdb.org/t/p/w500${profile_path}`;
+}
+
+export {
+  fetchTrendMovies,
+  fetchMovie,
+  fetchMovieDetails,
+  fetchMovieActors,
+  fetchActorImg,
+  fetchMovieReviews,
+};

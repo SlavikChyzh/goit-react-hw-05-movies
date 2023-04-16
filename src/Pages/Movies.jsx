@@ -16,7 +16,6 @@ const Movies = () => {
 
   useEffect(() => {
     if (movieName === '') return;
-
     async function getMovie() {
       const movies = await fetchMovie(movieName);
       setMovie(movies);
@@ -31,13 +30,17 @@ const Movies = () => {
     e.currentTarget.reset();
   };
 
-  console.log(movies);
-
   return (
     <>
       <StyledHeader> Search Movies </StyledHeader>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="movieName" />
+        <input
+          type="text"
+          name="movieName"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search movies"
+        />
         <button type="submit">Search</button>
       </form>
       {movies && (
@@ -46,7 +49,7 @@ const Movies = () => {
             {movies.map(movie => {
               return (
                 <StyledLi key={movie.id}>
-                  <StyledLink to={movie.id} state={{ from: location }}>
+                  <StyledLink to={`${movie.id}`} state={{ from: location }}>
                     {movie.original_title}
                   </StyledLink>
                 </StyledLi>
