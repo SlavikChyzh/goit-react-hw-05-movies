@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'Services/API';
 import { StyledFilmImg, StyledLink } from 'StyledTags/Tags.styled';
