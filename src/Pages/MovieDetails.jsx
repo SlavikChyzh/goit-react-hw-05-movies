@@ -59,9 +59,7 @@ const MovieDetails = () => {
               Reviews
             </StyledLink>
           </div>
-          <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
-          </Suspense>
         </div>
       </div>
     </>
